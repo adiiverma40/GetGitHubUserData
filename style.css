@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+#header{
+    background-color: black;
+    color:white;
+    height: 60px;
+}
+
+header h2{
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+
+/* styling user box */
+
+#user{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.box{
+    margin-top: 30px;
+    width: 350px;
+    height: 25rem;
+    margin-left: 10px;
+    box-shadow: 4px 4px 60px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+/* left box styling */
+
+
+.round{
+    width: 100px;
+    height: 100px;
+}
+
+h3 {
+	margin: 10px 0;
+}
+
+h6 {
+	margin: 5px 0;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.card-container {
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: relative;
+	
+	max-width: 100%;
+	text-align: center;
+}
+
+
+.card-container .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+	padding: 7px;
+}
+
+
+.language {
+	background-color: #1F1A36;
+	text-align: left;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.language ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.language ul li {
+	border: 1px solid #2D2747;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 7px 7px 0;
+	padding: 7px;
+}
