@@ -1,46 +1,49 @@
-# GitHub User Data Viewer
+# GitHub User Information Tool
 
-This project is developed by Adii and aims to display GitHub user data using HTML, CSS, and JavaScript.
-
-## Overview
-
-The GitHub User Data Viewer is a web application that leverages the GitHub API to fetch and display information about GitHub users. It allows users to search for a GitHub username and view details such as repositories, followers, following, and more.
+This project is a tool built using HTML, CSS, and JavaScript that utilizes the GitHub API to provide information about a GitHub user based on their username. It retrieves various details such as the number of repositories, user name, email, total commits, languages used in projects, and a list of repositories.
 
 ## Features
 
-- **Search GitHub Users:** Users can enter a GitHub username and retrieve information about that user.
-- **Display User Data:** Display various user details such as repositories, followers, following, etc.
-- **Responsive Design:** The application is responsive and works well on different devices.
-
-## Technologies Used
-
-- **HTML:** Used for structuring the web pages.
-- **CSS:** Used for styling the user interface.
-- **JavaScript:** Used for dynamic functionality and interaction with the GitHub API.
+- **User Information**: Retrieves basic information about the GitHub user including their name, email, and the number of repositories.
+- **Repository List**: Displays a list of repositories owned by the user.
+- **Total Commits**: Calculates the total number of commits made by the user across all repositories.
+- **Languages Used**: Provides a breakdown of the programming languages used in the user's repositories.
 
 ## Usage
 
-To use the GitHub User Data Viewer:
+1. **Clone the Repository**:
+    https://github.com/adiiverma40/GetGitHubUserData
 
-1. Clone this repository to your local machine.
-2. Open the `index.html` file in your web browser.
-3. Enter a GitHub username in the search box and press Enter.
-4. View the fetched user data displayed on the screen.
 
-## How to Contribute
+2. **Set up Environment Variables**:
+- Obtain a GitHub personal access token from your GitHub account settings.
+- Add token in script.js file in token variable.
+  ```
+  token=your_github_token_here
+  ```
 
-Contributions to improve the GitHub User Data Viewer are welcome! Here's how you can contribute:
+3. **Open index.html**:
+- Navigate to the project directory.
+- Open the `index.html` file in your web browser.
 
-1. Fork the repository.
-2. Make your changes in a new branch.
-3. Commit your changes with descriptive commit messages.
-4. Push your changes to your fork.
-5. Submit a pull request.
+4. **Enter Username**:
+- In the input field provided, enter the GitHub username of the user you want to retrieve information for.
+- Click on the "Search" button.
 
-## Credits
+5. **View Results**:
+- The application will display the requested information about the GitHub user.
 
-- Adii - Developer
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- GitHub API
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any bugs, feature requests, or enhancements.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
