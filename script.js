@@ -1,4 +1,4 @@
-const token = `Your_github_token`;
+const token = ``;
 
 // DOM elements
 const userImage = document.querySelector("#userImage");
@@ -64,7 +64,7 @@ function updateRepoList(repositories) {
     
     const repoVisibility = document.createElement("p");
     repoVisibility.classList.add("repoDescription");
-    repoVisibility.style.color = "blue";
+    repoVisibility.style.color = "white";
     repoVisibility.innerText = `Visibility: ${repo.visibility || "Not provided"}`;
     
     repoList.appendChild(repoBox);
