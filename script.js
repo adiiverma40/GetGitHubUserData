@@ -1,74 +1,77 @@
-// provide your github token in the token variable
-const token = `your_github_token`;
+// Provide your GitHub token in the token variable
+const token = `your github token`;
 
-//DOM vaariable declarations
-let userImage = document.querySelector("#userImage");
-let userName = document.querySelector("#userName");
-let userBio = document.querySelector("#userBio");
-let userEmail = document.querySelector("#email");
-let totalRepo = document.querySelector("#repoCount");
+// DOM variable declarations
+const userImage = document.querySelector("#userImage");
+const userName = document.querySelector("#userName");
+const userBio = document.querySelector("#userBio");
+const userEmail = document.querySelector("#email");
+const totalRepo = document.querySelector("#repoCount");
 
-//variables declaration
+// Variables declaration
 let username = prompt('Enter username');
-let newData;
-let totalRepositories;
-// function to change html
-async function repoCount() {
-  try {
-    const totalRepositories = await getUserRepo();
-    console.log("Total number of repositories:", totalRepositories);
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-repoCount();
-function changeUserData(x){
-  userImage.src = x.avatar_url;
-  userId.innerText = x.login;
-  userName.innerText = x.name;
-  userBio.innerText = x.bio;
-  userEmail.innerText = x.email;
-  // try{
-  totalRepo.innerText = totalRepositories;
-  // } catch (error) {console.log('Error:', error);}
-}
 
-//API calling
-async function fetchUserData(){
+// Function to fetch user data and update UI
+async function fetchUserData() {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}`, {
+    const userDataResponse = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
         'Authorization': `token ${token}` 
       }
     });
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    if (!userDataResponse.ok) {
+      throw new Error('Failed to fetch user data');
     }
-    const data = await response.json();
-    changeUserData(data);
-  } catch (err) { console.log(err); }
+    const userData = await userDataResponse.json();
+    updateUI(userData);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    throw error;
+  }
 }
-let userData = fetchUserData();
 
-async function getUserRepo() {
+// Function to update UI with user data
+function updateUI(userData) {
+  userImage.src = userData.avatar_url;
+  userName.innerText = userData.name || "Name not provided";
+  userBio.innerText = userData.bio || "Bio not provided";
+  userEmail.innerText = userData.email || "Email not provided";
+}
+
+// Function to fetch total number of repositories
+async function fetchRepositories() {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`, {
       headers: {
         'Authorization': `token ${token}`
       }
     });
-    const newData = await response.json(); // Add await here to wait for JSON parsing
-    
-    // Count the total number of repositories
-    const repoCount = newData.length; // Assuming newData is an array of repositories
-    
-    return repoCount;
-  } catch (err) { 
-    console.error(err); 
-    throw err;
+    if (!reposResponse.ok) {
+      throw new Error('Failed to fetch repositories');
+    }
+    const reposData = await reposResponse.json();
+    const totalRepositories = reposData.length;
+    updateRepoCount(totalRepositories);
+  } catch (error) {
+    console.error('Error fetching repositories:', error);
+    throw error;
   }
 }
 
+// Function to update repository count in UI
+function updateRepoCount(count) {
+  totalRepo.innerText = `Total Repo : ${count}`;
+}
 
-// // Object { login: "adiiverma40", id: 146183407, node_id: "U_kgDOCLaU7w", avatar_url: "https://avatars.githubusercontent.com/u/146183407?v=4", gravatar_id: "", url: "https://api.github.com/users/adiiverma40", html_url: "https://github.com/adiiverma40", followers_url: "https://api.github.com/users/adiiverma40/followers", following_url: "https://api.github.com/users/adiiverma40/following{/other_user}", gists_url: "https://api.github.com/users/adiiverma40/gists{/gist_id}", … }
+// Initialize the application
+async function init() {
+  try {
+    await fetchUserData();
+    await fetchRepositories();
+  } catch (error) {
+    console.error('Initialization error:', error);
+  }
+}
+
+// Call init function to start the application
+init();
